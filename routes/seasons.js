@@ -1,12 +1,15 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const apicache = require('apicache');
 
 const router = express.Router();
 
 const url = 'https://www.timeanddate.com/calendar/seasons.html';
 
-router.get('/', async (req, res) => {
+let cache = apicache.middleware;
+
+router.get('/', cache('1 hour'), async (req, res) => {
 
     try {
         

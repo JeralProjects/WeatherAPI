@@ -1,13 +1,16 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const apicache = require('apicache');
 
 const router = express.Router();
 
 const url = 'https://www.timeanddate.com/moon/sri-lanka/galle';
 const url1 = 'https://www.timeanddate.com/moon/phases/sri-lanka/galle';
 
-router.get('/', async (req, res) => {
+let cache = apicache.middleware;
+
+router.get('/', cache('1 minutes'), async (req, res) => {
 
     try {
         

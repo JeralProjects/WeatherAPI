@@ -1,10 +1,11 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const apicache = require('apicache');
 
 const router = express.Router();
 
-
+let cache = apicache.middleware;
 
 const centralUrls1 = [
     'https://www.accuweather.com/en/lk/abasingammedda/842940/weather-forecast/842940',
@@ -110,7 +111,7 @@ const centerUrls2= [
     'https://www.accuweather.com/en/lk/werellagama/307361/weather-forecast/307361',
 ];
 
-router.get('/centrallocations1', async (req, res) => {
+router.get('/centrallocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -228,7 +229,7 @@ router.get('/centrallocations1', async (req, res) => {
 
 });
 
-router.get('/centrallocations2', async (req, res) => {
+router.get('/centrallocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -459,7 +460,7 @@ const easternUrls2 = [
     'https://www.accuweather.com/en/lk/veranativu/307567/weather-forecast/307567',
 ];
 
-router.get('/easternlocations1', async (req, res) => {
+router.get('/easternlocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -576,7 +577,7 @@ router.get('/easternlocations1', async (req, res) => {
     }
 
 });
-router.get('/easternlocations2', async (req, res) => {
+router.get('/easternlocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -799,7 +800,7 @@ const northCentralIrls2 = [
     'https://www.accuweather.com/en/lk/yakalla/308839/weather-forecast/308839',
 ];
 
-router.get('/northcentrallocations1', async (req, res) => {
+router.get('/northcentrallocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -917,7 +918,7 @@ router.get('/northcentrallocations1', async (req, res) => {
 
 });
 
-router.get('/northcentrallocations2', async (req, res) => {
+router.get('/northcentrallocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1141,7 +1142,7 @@ const northWesternUrls2 = [
     'https://www.accuweather.com/en/lk/wewalagama/308885/weather-forecast/308885',
 ];
 
-router.get('/northwesternlocations1', async (req, res) => {
+router.get('/northwesternlocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1259,7 +1260,7 @@ router.get('/northwesternlocations1', async (req, res) => {
 
 });
 
-router.get('/northwesternlocations2', async (req, res) => {
+router.get('/northwesternlocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1485,7 +1486,7 @@ const nothernUrls2 = [
     'https://www.accuweather.com/en/lk/vellankulam/308948/weather-forecast/308948',
 ];
 
-router.get('/northernlocations1', async (req, res) => {
+router.get('/northernlocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1603,7 +1604,7 @@ router.get('/northernlocations1', async (req, res) => {
 
 });
 
-router.get('/northernlocations2', async (req, res) => {
+router.get('/northernlocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1829,7 +1830,7 @@ const sabaragamuUrls2 = [
     'https://www.accuweather.com/en/lk/yatiyantota/309471/weather-forecast/309471',
 ];
 
-router.get('/sabaragamuwalocations1', async (req, res) => {
+router.get('/sabaragamuwalocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -1947,7 +1948,7 @@ router.get('/sabaragamuwalocations1', async (req, res) => {
 
 });
 
-router.get('/sabaragamuwalocations2', async (req, res) => {
+router.get('/sabaragamuwalocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2180,7 +2181,7 @@ const sothernUrls2 = [
     'https://www.accuweather.com/en/lk/wiraketiya/309799/weather-forecast/309799',
 ];
 
-router.get('/southernlocations1', async (req, res) => {
+router.get('/southernlocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2298,7 +2299,7 @@ router.get('/southernlocations1', async (req, res) => {
 
 });
 
-router.get('/southernlocations2', async (req, res) => {
+router.get('/southernlocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2527,7 +2528,7 @@ const uva1UrlLinks2 = [
     'https://www.accuweather.com/en/lk/wellawaya/310655/weather-forecast/310655',
 ];
 
-router.get('/uvalocations1', async (req, res) => {
+router.get('/uvalocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2645,7 +2646,7 @@ router.get('/uvalocations1', async (req, res) => {
 
 });
 
-router.get('/uvalocations2', async (req, res) => {
+router.get('/uvalocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2873,7 +2874,7 @@ const western1UrlLinks = [
     'https://www.accuweather.com/en/lk/yakwala/311467/weather-forecast/311467'
 ];
 
-router.get('/westernlocations1', async (req, res) => {
+router.get('/westernlocations1', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 
@@ -2990,7 +2991,7 @@ router.get('/westernlocations1', async (req, res) => {
     }
 
 });
-router.get('/westernlocations2', async (req, res) => {
+router.get('/westernlocations2', cache('5 minutes'), async (req, res) => {
 
     const dataList = [];
 

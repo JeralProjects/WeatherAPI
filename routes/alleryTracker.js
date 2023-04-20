@@ -1,12 +1,15 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const apicache = require('apicache');
 
 const router = express.Router();
 
+let cache = apicache.middleware;
+
 const url = 'https://weather.com/forecast/allergy/l/2e7e4387ec7c77787780f685cf56e85c902235f12b815f56bccce92741840e89';
 
-router.get('/', async (req, res) => {
+router.get('/', cache('1 hour'), async (req, res) => {
 
     try {
         

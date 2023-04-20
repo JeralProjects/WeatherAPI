@@ -1,12 +1,15 @@
 const express = require('express');
 const cheerio = require('cheerio');
 const axios = require('axios');
+const apicache = require('apicache');
 
 const router = express.Router();
 
+let cache = apicache.middleware;
+
 const url1 = 'https://www.accuweather.com/en/hurricane';
 
-router.get('/', async (req, res) => {
+router.get('/', cache('30 minutes'), async (req, res) => {
 
     try {
         

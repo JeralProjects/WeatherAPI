@@ -1,12 +1,15 @@
 const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
+const apicache = require('apicache');
 
 const router = express.Router();
 
+let cache = apicache.middleware;
+
 const url = 'https://www.timeanddate.com/astronomy/night/sri-lanka/sri-jayawardenapura-kotte';
 
-router.get('/', async (req, res) => {
+router.get('/', cache('30 minutes'), async (req, res) => {
 
     try {
         

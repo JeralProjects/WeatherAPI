@@ -1,8 +1,11 @@
 const express = require('express');
 const axios  = require('axios');
 const cheerio  = require('cheerio');
+const apicache = require('apicache');
 
 const router = express.Router();
+
+let cache = apicache.middleware;
 
 //for Sri Lanka Different Weather 10 Locations
 const urls = [
@@ -18,7 +21,7 @@ const urls = [
     'https://www.timeanddate.com/weather/sri-lanka/kandy' 
 ];
 
-router.get('/mainLocations', async (req, res) => {
+router.get('/mainLocations', cache('5 minutes'), async (req, res) => {
 
     let dataList = []; 
 
@@ -253,7 +256,7 @@ router.get('/mainLocations', async (req, res) => {
 //for Sri Lanka Whole Weather
 const slurl = 'https://www.timeanddate.com/weather/sri-lanka';
 
-router.get('/sriLanka', async (req, res) => {
+router.get('/sriLanka', cache('5 minutes'), async (req, res) => {
 
     try {
 

@@ -32,12 +32,6 @@ app.use('/api/v1/allergies', allergyRoutes);
 app.use('/api/v1/airquality', airQualityRoutes);
 
 const port = process.env.PORT || 4000;      
-//     .then( () => {
-//         console.log('Database connected successfully');
-//     })
-//     .catch( (error) => {
-//         console.log(error);
-//     });
 
 app.listen(port, () => {
     console.log(`Server is listening on ${port}`);

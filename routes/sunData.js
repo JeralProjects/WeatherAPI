@@ -4,10 +4,10 @@ const axios = require('axios');
 const apicache = require('apicache');
 
 const router = express.Router();
-
+const PORT = process.env.PORT || 4000; 
 let cache = apicache.middleware;
 
-const url = 'https://www.timeanddate.com/sun/sri-lanka/galle';
+const url = `http://localhost:${PORT}/timesanddate/sun/sri-lanka/sri-jayawardenapura-kotte`;
 
 router.get('/', cache('1 minutes'), async (req, res) => {
 
